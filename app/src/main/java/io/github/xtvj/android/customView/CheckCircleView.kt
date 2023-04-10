@@ -111,14 +111,14 @@ class CheckCircleView : View {
 
     //绘制矩形
     private val rectF = RectF()
-    private val insideRrectF = RectF()
+    private val insideRectF = RectF()
 
     override fun onSizeChanged(w: Int, h: Int, oldw: Int, oldh: Int) {
         super.onSizeChanged(w, h, oldw, oldh)
         initSize()
     }
 
-    private fun initSize() {
+    init {
         bgPaint.strokeCap = strokeCap
         bgPaint.strokeJoin = Paint.Join.ROUND
         bgPaint.style = Paint.Style.STROKE
@@ -128,6 +128,9 @@ class CheckCircleView : View {
         insidePaint.style = Paint.Style.FILL
         insidePaint.color = checkBackgroundColor
         insidePaint.isAntiAlias = true
+    }
+
+    private fun initSize() {
         val length = min(width, height)
         rectF.set(
             (width - length) / 2.toFloat() + circleFirstWidth,
@@ -135,7 +138,7 @@ class CheckCircleView : View {
             (width - length) / 2.toFloat() + length - circleFirstWidth,
             (height - length) / 2.toFloat() + length - circleFirstWidth
         )
-        insideRrectF.set(
+        insideRectF.set(
             (width - length) / 2.toFloat() + (1 - radiusFourth) * length / 2 + circleFourthWidth,
             (height - length) / 2.toFloat() + (1 - radiusFourth) * length / 2 + circleFourthWidth,
             (width - length) / 2.toFloat() + (1 - radiusFourth) * length / 2 - circleFourthWidth + radiusFourth * length,
@@ -173,7 +176,7 @@ class CheckCircleView : View {
         //最里面三个圆环
         repeat(3) {
             canvas?.drawArc(
-                insideRrectF, (20 + (it) * 120).toFloat(),
+                insideRectF, (20 + (it) * 120).toFloat(),
                 100f, false, bgPaint
             )
         }
