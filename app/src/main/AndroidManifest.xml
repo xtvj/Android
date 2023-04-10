@@ -13,10 +13,19 @@
         android:theme="@style/Theme.Android"
         tools:targetApi="31">
         <activity
+            android:name=".ui.customview.CustomViewActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:exported="false"
+            android:launchMode="singleTask"
+            android:windowSoftInputMode="stateHidden|adjustResize" />
+        <activity
             android:name=".ui.animatedVectorDrawable.AnimatedVectorDrawableActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
             android:exported="false"
             android:label="animated_vector_drawable"
-            android:theme="@style/Theme.Android" />
+            android:launchMode="singleTask"
+            android:theme="@style/Theme.Android"
+            android:windowSoftInputMode="stateHidden|adjustResize" />
         <activity
             android:name=".ui.welcome.WelcomeActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
@@ -31,8 +40,22 @@
         </activity>
         <activity
             android:name=".ui.main.MainActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:exported="false"
+            android:launchMode="singleTask"
             android:theme="@style/Theme.Android"
-            android:exported="true" />
+            android:windowSoftInputMode="stateHidden|adjustResize" />
+
+
+        <provider
+            android:name="androidx.startup.InitializationProvider"
+            android:authorities="${applicationId}.androidx-startup"
+            android:exported="false"
+            tools:node="merge">
+            <meta-data
+                android:name="${applicationId}.start.StartInitializer"
+                android:value="androidx.startup" />
+        </provider>
     </application>
 
 </manifest>

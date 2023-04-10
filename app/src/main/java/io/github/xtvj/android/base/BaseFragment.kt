@@ -5,7 +5,7 @@ import android.view.View
 import androidx.annotation.LayoutRes
 import androidx.databinding.ViewDataBinding
 import androidx.lifecycle.MutableLiveData
-import io.github.xtvj.android.ui.customView.LoadingDialog
+import io.github.xtvj.android.customView.LoadingDialog
 
 abstract class BaseFragment<T : ViewDataBinding> constructor(
     @LayoutRes private val contentLayoutId: Int

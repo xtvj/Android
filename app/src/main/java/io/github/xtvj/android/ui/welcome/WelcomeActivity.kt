@@ -19,6 +19,7 @@ class WelcomeActivity : BaseActivity<ActivityWelcomeBinding>(R.layout.activity_w
         super.onCreate(savedInstanceState)
         lifecycleScope.launch {
             startActivity(Intent(this@WelcomeActivity, MainActivity::class.java))
+            finish()
         }
     }
 }

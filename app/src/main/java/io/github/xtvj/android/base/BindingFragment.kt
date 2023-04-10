@@ -10,7 +10,7 @@ import androidx.databinding.DataBindingComponent
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
-import io.github.xtvj.android.utils.logMessage
+import io.github.xtvj.android.utils.LogUtils.logs
 
 abstract class BindingFragment<T : ViewDataBinding> constructor(
     @LayoutRes private val contentLayoutId: Int
@@ -37,7 +37,7 @@ abstract class BindingFragment<T : ViewDataBinding> constructor(
     ): View {
         _binding =
             DataBindingUtil.inflate(inflater, contentLayoutId, container, false, bindingComponent)
-        logMessage(javaClass.name + "---onCreateView")
+        logs(javaClass.name + "---onCreateView")
         return binding.root
     }
 
@@ -45,41 +45,41 @@ abstract class BindingFragment<T : ViewDataBinding> constructor(
         super.onDestroyView()
         _binding?.unbind()
         _binding = null
-        logMessage(javaClass.name + "---onDestroyView")
+        logs(javaClass.name + "---onDestroyView")
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        logMessage(javaClass.name + "---onCreate")
+        logs(javaClass.name + "---onCreate")
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        logMessage(javaClass.name + "---onViewCreated")
+        logs(javaClass.name + "---onViewCreated")
     }
 
     override fun onStart() {
         super.onStart()
-        logMessage(javaClass.name + "---onStart")
+        logs(javaClass.name + "---onStart")
     }
 
     override fun onResume() {
         super.onResume()
-        logMessage(javaClass.name + "---onResume")
+        logs(javaClass.name + "---onResume")
     }
 
     override fun onPause() {
         super.onPause()
-        logMessage(javaClass.name + "---onPause")
+        logs(javaClass.name + "---onPause")
     }
 
     override fun onStop() {
         super.onStop()
-        logMessage(javaClass.name + "---onStop")
+        logs(javaClass.name + "---onStop")
     }
 
     override fun onDestroy() {
         super.onDestroy()
-        logMessage(javaClass.name + "---onDestroy")
+        logs(javaClass.name + "---onDestroy")
     }
 }

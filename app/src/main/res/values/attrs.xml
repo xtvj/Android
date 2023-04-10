@@ -1,6 +1,32 @@
 <resources>
-    <declare-styleable name="FullscreenAttrs">
-        <attr name="fullscreenBackgroundColor" format="color" />
-        <attr name="fullscreenTextColor" format="color" />
+    <declare-styleable name="CheckCircleView">
+        <!--背景色-->
+        <attr name="check_background_color" format="color" />
+        <!--按压时颜色-->
+        <attr name="check_foreground_color" format="color" />
+        <!--最外圆环的宽度-->
+        <attr name="check_circle_first_width" format="dimension"/>
+        <!--第二个圆环的宽度-->
+        <attr name="check_circle_second_width" format="dimension"/>
+        <!--第四个圆环的宽度-->
+        <attr name="check_circle_fourth_width" format="dimension"/>
+        <!--第二个圆半径0-1-->
+        <attr name="check_radius_second" format="float"/>
+        <!--第三个圆半径0-1-->
+        <attr name="check_radius_third" format="float"/>
+        <!--第四个圆半径0-1-->
+        <attr name="check_radius_fourth" format="float"/>
+        <!--最外圆渐进开始弧度0-360-->
+        <attr name="check_radian_start" format="float"/>
+        <!--最外圆渐进结束弧度0-360-->
+        <attr name="check_radian_end" format="float"/>
+        <attr name="check_stroke_cap" format="enum">
+            <!--默认没有-->
+            <enum name="butt" value="0" />
+            <!--圆角-->
+            <enum name="round" value="1" />
+            <!--直角-->
+            <enum name="square" value="2" />
+        </attr>
     </declare-styleable>
 </resources>

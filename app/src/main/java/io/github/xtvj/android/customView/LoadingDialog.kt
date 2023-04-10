@@ -1,9 +1,8 @@
-package io.github.xtvj.android.ui.customView
+package io.github.xtvj.android.customView
 
 import android.app.Dialog
 import android.content.res.Resources
 import android.os.Bundle
-import android.util.DisplayMetrics
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
