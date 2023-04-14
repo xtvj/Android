@@ -29,6 +29,12 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
+            <io.github.xtvj.android.customView.FrequencyView
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                app:layout_constraintDimensionRatio="H,1:1"
+                app:layout_constraintTop_toBottomOf="@id/ccvCustomView"/>
+
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
 

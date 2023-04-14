@@ -5,21 +5,21 @@
         <!--按压时颜色-->
         <attr name="check_foreground_color" format="color" />
         <!--最外圆环的宽度-->
-        <attr name="check_circle_first_width" format="dimension"/>
+        <attr name="check_circle_first_width" format="dimension" />
         <!--第二个圆环的宽度-->
-        <attr name="check_circle_second_width" format="dimension"/>
+        <attr name="check_circle_second_width" format="dimension" />
         <!--第四个圆环的宽度-->
-        <attr name="check_circle_fourth_width" format="dimension"/>
+        <attr name="check_circle_fourth_width" format="dimension" />
         <!--第二个圆半径0-1-->
-        <attr name="check_radius_second" format="float"/>
+        <attr name="check_radius_second" format="float" />
         <!--第三个圆半径0-1-->
-        <attr name="check_radius_third" format="float"/>
+        <attr name="check_radius_third" format="float" />
         <!--第四个圆半径0-1-->
-        <attr name="check_radius_fourth" format="float"/>
+        <attr name="check_radius_fourth" format="float" />
         <!--最外圆渐进开始弧度0-360-->
-        <attr name="check_radian_start" format="float"/>
+        <attr name="check_radian_start" format="float" />
         <!--最外圆渐进结束弧度0-360-->
-        <attr name="check_radian_end" format="float"/>
+        <attr name="check_radian_end" format="float" />
         <attr name="check_stroke_cap" format="enum">
             <!--默认没有-->
             <enum name="butt" value="0" />
@@ -28,5 +28,25 @@
             <!--直角-->
             <enum name="square" value="2" />
         </attr>
+    </declare-styleable>
+
+    <declare-styleable name="FrequencyView">
+        <attr name="frequency_text_start" format="string" />
+        <attr name="frequency_text_end" format="string" />
+        <attr name="frequency_text_start_color" format="color" />
+        <attr name="frequency_text_start_size" format="dimension" />
+        <attr name="frequency_progress" format="float" />
+        <attr name="frequency_progress_color" format="color" />
+        <attr name="frequency_progress_size" format="dimension" />
+
+        <attr name="frequency_start_color" format="color" />
+        <attr name="frequency_middle_color" format="color" />
+        <attr name="frequency_end_color" format="color" />
+
+        <attr name="frequency_ring_color" format="color" />
+
+        <attr name="frequency_arrow_color" format="color" />
+
+
     </declare-styleable>
 </resources>
