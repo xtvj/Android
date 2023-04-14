@@ -11,6 +11,7 @@ import io.github.xtvj.android.base.BaseActivity
 import io.github.xtvj.android.databinding.ActivityMainBinding
 import io.github.xtvj.android.ui.animatedVectorDrawable.AnimatedVectorDrawableActivity
 import io.github.xtvj.android.ui.customview.CustomViewActivity
+import io.github.xtvj.android.ui.navigationView.NavigationViewActivity
 import io.github.xtvj.android.utils.GridSpaceItemDecoration
 import io.github.xtvj.android.utils.ScreenUtils.toPx
 import kotlinx.coroutines.launch
@@ -22,7 +23,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
         MainAdapter()
     }
 
-    private val list = listOf("Animated\nDrawable", "自定义\nView", "测试三", "测试四", "测试五")
+    private val list = listOf("Animated\nDrawable", "自定义\nView", "导航", "测试四", "测试五")
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -45,7 +46,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
                     startActivity(Intent(this,CustomViewActivity::class.java))
                 }
                 2 -> {
-
+                    startActivity(Intent(this,NavigationViewActivity::class.java))
                 }
                 3 -> {
 

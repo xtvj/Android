@@ -10,21 +10,26 @@
             type="io.github.xtvj.android.interfaces.OnClickHandle" />
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:context=".ui.customview.CustomViewActivity">
+        android:layout_height="match_parent">
 
-        <io.github.xtvj.android.customView.CheckCircleView
-            android:id="@+id/ccvCustomView"
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:onClick="@{(v) ->onClickHandle.onClick(v)}"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintDimensionRatio="H,1:1"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:layout_height="wrap_content"
+            tools:context=".ui.customview.CustomViewActivity">
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            <io.github.xtvj.android.customView.CheckCircleView
+                android:id="@+id/ccvCustomView"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:onClick="@{(v) ->onClickHandle.onClick(v)}"
+                app:layout_constraintDimensionRatio="H,1:1"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+
 </layout>

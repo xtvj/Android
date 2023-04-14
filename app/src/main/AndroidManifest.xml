@@ -13,6 +13,11 @@
         android:theme="@style/Theme.Android"
         tools:targetApi="31">
         <activity
+            android:name=".ui.navigationView.NavigationViewActivity"
+            android:exported="false"
+            android:label="导航测试"
+            android:theme="@style/Theme.Android.Navigation" />
+        <activity
             android:name=".ui.customview.CustomViewActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:exported="false"
@@ -45,7 +50,6 @@
             android:launchMode="singleTask"
             android:theme="@style/Theme.Android"
             android:windowSoftInputMode="stateHidden|adjustResize" />
-
 
         <provider
             android:name="androidx.startup.InitializationProvider"

@@ -1,6 +1,6 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Theme.Android" parent="Theme.MaterialComponents.Light.DarkActionBar">
+    <style name="Theme.Android" parent="Theme.MaterialComponents.Light.NoActionBar">
         <!-- Primary brand color. -->
         <item name="colorPrimary">@color/purple_500</item>
         <item name="colorPrimaryVariant">@color/purple_700</item>
@@ -16,6 +16,18 @@
         <item name="android:navigationBarColor">@color/color_white</item>
 
     </style>
+
+    <style name="Theme.Android.Navigation" parent="Theme.Android">
+        <item name="android:windowTranslucentStatus">false</item>
+        <item name="android:statusBarColor">@color/purple_500</item>
+        <item name="statusBarForeground">@android:color/transparent</item>
+        <item name="statusBarBackground">@color/purple_500</item>
+        <item name="android:windowDrawsSystemBarBackgrounds">true</item>
+    </style>
+
+    <style name="Theme.Android.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="Theme.Android.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
 
 </resources>
