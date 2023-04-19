@@ -30,10 +30,18 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <io.github.xtvj.android.customView.FrequencyView
+                android:id="@+id/frequencyView"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 app:layout_constraintDimensionRatio="H,1:1"
-                app:layout_constraintTop_toBottomOf="@id/ccvCustomView"/>
+                app:layout_constraintTop_toBottomOf="@id/ccvCustomView" />
+
+            <io.github.xtvj.android.customView.SleepStatisticsView
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:background="@color/sub_text_color"
+                app:layout_constraintDimensionRatio="H,1:1"
+                app:layout_constraintTop_toBottomOf="@id/frequencyView" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>

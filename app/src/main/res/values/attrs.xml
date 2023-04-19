@@ -31,22 +31,13 @@
     </declare-styleable>
 
     <declare-styleable name="FrequencyView">
-        <attr name="frequency_text_start" format="string" />
-        <attr name="frequency_text_end" format="string" />
-        <attr name="frequency_text_start_color" format="color" />
-        <attr name="frequency_text_start_size" format="dimension" />
         <attr name="frequency_progress" format="float" />
         <attr name="frequency_progress_color" format="color" />
-        <attr name="frequency_progress_size" format="dimension" />
-
         <attr name="frequency_start_color" format="color" />
         <attr name="frequency_middle_color" format="color" />
+        <attr name="frequency_middle2_color" format="color" />
         <attr name="frequency_end_color" format="color" />
-
         <attr name="frequency_ring_color" format="color" />
-
         <attr name="frequency_arrow_color" format="color" />
-
-
     </declare-styleable>
 </resources>
