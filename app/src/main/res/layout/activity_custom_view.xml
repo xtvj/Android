@@ -21,28 +21,46 @@
 
             <io.github.xtvj.android.customView.CheckCircleView
                 android:id="@+id/ccvCustomView"
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:onClick="@{(v) ->onClickHandle.onClick(v)}"
                 app:layout_constraintDimensionRatio="H,1:1"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintWidth_percent="0.75" />
 
             <io.github.xtvj.android.customView.FrequencyView
                 android:id="@+id/frequencyView"
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
                 android:layout_height="0dp"
                 app:layout_constraintDimensionRatio="H,1:1"
-                app:layout_constraintTop_toBottomOf="@id/ccvCustomView" />
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/ccvCustomView"
+                app:layout_constraintWidth_percent="0.75" />
 
             <io.github.xtvj.android.customView.SleepStatisticsView
-                android:layout_width="match_parent"
+                android:id="@+id/sleepStatisticsView"
+                android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:background="@color/sub_text_color"
                 app:layout_constraintDimensionRatio="H,1:1"
-                app:layout_constraintTop_toBottomOf="@id/frequencyView" />
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/frequencyView"
+                app:layout_constraintWidth_percent="0.75" />
 
+            <io.github.xtvj.android.customView.SleepStatusView
+                android:id="@+id/sleepStatusView"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginTop="@dimen/dimen_16dp"
+                app:layout_constraintDimensionRatio="H,268:165.5"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/sleepStatisticsView"
+                app:layout_constraintWidth_percent="0.75" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
 

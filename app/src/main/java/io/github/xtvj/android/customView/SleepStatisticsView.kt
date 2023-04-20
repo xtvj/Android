@@ -11,6 +11,7 @@ import android.util.AttributeSet
 import android.view.View
 import androidx.core.graphics.toRect
 import io.github.xtvj.android.R
+import kotlin.math.abs
 
 
 @SuppressLint("UseCompatLoadingForDrawables")
@@ -32,12 +33,12 @@ class SleepStatisticsView : View {
     private val sun = resources.getDrawable(R.drawable.icon_tsun2, null)
     private val moon = resources.getDrawable(R.drawable.icon_tmoom2, null)
 
-    var startAngle = 0f
+    var startAngle = 75f
         set(value) {
             field = value
             invalidate()
         }
-    var endAngle = 184f
+    var endAngle = 215f
         set(value) {
             field = value
             invalidate()
@@ -69,6 +70,11 @@ class SleepStatisticsView : View {
             invalidate()
         }
 
+    /**
+     * 月亮与太阳图标距离外圆环边缘与外圆环宽度的比例
+     */
+    private val moonOrSunPercent: Float = 1f / 7f
+
     init {
         outsetPaint.strokeWidth = outsetCircleWith
         outsetPaint.color = outsetCircleBackgroundColor
@@ -94,39 +100,30 @@ class SleepStatisticsView : View {
             360f, false, outsetPaint
         )
         canvas?.save()
-        outsetPaint.color = outsetCircleColor
-        canvas?.drawArc(
-            outsetCircleRectF, startAngle,
-            endAngle, false, outsetPaint
-        )
-
-        canvas?.save()
-        canvas?.rotate(startAngle, width.toFloat() / 2, height.toFloat() / 2)
-        moon.bounds = moonOrSunRectF.apply {
-            set(
-                0f,
-                height.toFloat() / 2 -  outsetCircleWith,
-                outsetCircleWith,
-                height.toFloat() / 2
+        //只有开始有结果值不相同时才绘制
+        if (abs(endAngle - startAngle) > 0){
+            //画进度圆
+            outsetPaint.color = outsetCircleColor
+            canvas?.drawArc(
+                outsetCircleRectF, startAngle,
+                endAngle - startAngle, false, outsetPaint
             )
-        }.toRect()
-        canvas?.let {
-            moon.draw(canvas)
+            canvas?.save()
+            //画月亮
+            canvas?.rotate(startAngle, width.toFloat() / 2, height.toFloat() / 2)
+            moon.bounds = moonOrSunRectF.toRect()
+            canvas?.let {
+                moon.draw(canvas)
+            }
+            canvas?.restore()
+            //画太阳
+            canvas?.rotate(endAngle, width.toFloat() / 2, height.toFloat() / 2)
+            sun.bounds = moonOrSunRectF.toRect()
+            canvas?.let {
+                sun.draw(canvas)
+            }
+            canvas?.restore()
         }
-        canvas?.restore()
-        canvas?.rotate(endAngle, width.toFloat() / 2, height.toFloat() / 2)
-        sun.bounds = moonOrSunRectF.apply {
-            set(
-                0f,
-                height.toFloat() / 2,
-                outsetCircleWith,
-                height / 2 + outsetCircleWith
-            )
-        }.toRect()
-        canvas?.let {
-            sun.draw(canvas)
-        }
-
         //画内圆
         repeat(48) {
             if (it % 4 == 0) {
@@ -163,13 +160,15 @@ class SleepStatisticsView : View {
             width - outsetCircleWith - insetCircleWidth * 3 / 2,
             height - outsetCircleWith - insetCircleWidth * 3 / 2
         )
-        moonOrSunRectF.set(
-            0f,
-            height.toFloat() / 2,
-            outsetCircleWith,
-            height / 2 + outsetCircleWith
-        )
         outsetPaint.strokeWidth = outsetCircleWith
         outsetPaint.color = outsetCircleBackgroundColor
+        moonOrSunRectF.apply {
+            set(
+                width - outsetCircleWith + outsetCircleWith*moonOrSunPercent,
+                height.toFloat() / 2 -  outsetCircleWith/2 + outsetCircleWith*moonOrSunPercent,
+                width -outsetCircleWith*moonOrSunPercent,
+                height.toFloat() / 2 + outsetCircleWith/2 - outsetCircleWith*moonOrSunPercent
+            )
+        }
     }
 }
