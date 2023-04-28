@@ -1,16 +1,22 @@
 package io.github.xtvj.android.utils
 
 import android.content.res.Resources
-import android.util.TypedValue
+
 
 object ScreenUtils {
 
-    val Float.toPx get() = this * Resources.getSystem().displayMetrics.density
+    val Float.dpToPx get() = this * Resources.getSystem().displayMetrics.density
 
-    val Float.toDp get() = this / Resources.getSystem().displayMetrics.density
+    val Float.pxToDp get() = this / Resources.getSystem().displayMetrics.density
 
-    val Int.toPx get() = (this * Resources.getSystem().displayMetrics.density).toInt()
+    val Float.spToPx get() = this * Resources.getSystem().displayMetrics.scaledDensity
 
-    val Int.toDp get() = (this / Resources.getSystem().displayMetrics.density).toInt()
+    val Int.dpToPx get() = (this * Resources.getSystem().displayMetrics.density)
+
+    val Int.pxToDp get() = (this / Resources.getSystem().displayMetrics.density)
+
+    val Int.spToPx get() = this * Resources.getSystem().displayMetrics.scaledDensity
+
+
 
 }

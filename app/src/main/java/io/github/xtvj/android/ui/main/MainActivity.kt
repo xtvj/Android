@@ -13,7 +13,7 @@ import io.github.xtvj.android.ui.animatedVectorDrawable.AnimatedVectorDrawableAc
 import io.github.xtvj.android.ui.customview.CustomViewActivity
 import io.github.xtvj.android.ui.navigationView.NavigationViewActivity
 import io.github.xtvj.android.utils.GridSpaceItemDecoration
-import io.github.xtvj.android.utils.ScreenUtils.toPx
+import io.github.xtvj.android.utils.ScreenUtils.dpToPx
 import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
@@ -35,7 +35,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
 
     private fun initView() {
         binding.rvMain.layoutManager = GridLayoutManager(this, 3)
-        binding.rvMain.addItemDecoration(GridSpaceItemDecoration(3, (16).toPx, (16).toPx))
+        binding.rvMain.addItemDecoration(GridSpaceItemDecoration(3, (16).dpToPx.toInt(), (16).dpToPx.toInt()))
         binding.rvMain.adapter = adapter
         adapter.onItemClick = { _, position ->
             when (position) {

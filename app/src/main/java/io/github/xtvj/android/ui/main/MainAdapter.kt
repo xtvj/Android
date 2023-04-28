@@ -4,7 +4,7 @@ import androidx.recyclerview.widget.DiffUtil
 import io.github.xtvj.android.R
 import io.github.xtvj.android.base.BindingPagingDataAdapter
 import io.github.xtvj.android.databinding.AdapterMainBinding
-import io.github.xtvj.android.utils.ScreenUtils.toPx
+import io.github.xtvj.android.utils.ScreenUtils.dpToPx
 
 class MainAdapter : BindingPagingDataAdapter<AdapterMainBinding, String>(R.layout.adapter_main, diff) {
 
@@ -25,7 +25,7 @@ class MainAdapter : BindingPagingDataAdapter<AdapterMainBinding, String>(R.layou
     override fun bind(binding: AdapterMainBinding, item: String, position: Int) {
         binding.mainText = item
         val params = binding.mbAdapterMain.layoutParams
-        params.width = (dm.widthPixels - (4 * 16).toPx) / 3
+        params.width = ((dm.widthPixels - (4 * 16).dpToPx) / 3).toInt()
         binding.mbAdapterMain.setOnClickListener {
             onItemClick?.invoke(item, position)
         }
