@@ -4,26 +4,71 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:background="@color/white"
-    tools:ignore="Overdraw">
+    tools:background="@color/light_blue_A200">
 
-    <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/tvContent"
-        android:layout_width="wrap_content"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/clMarker"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="5dp"
-        android:ellipsize="end"
-        android:paddingStart="4dp"
-        android:paddingEnd="4dp"
-        android:singleLine="true"
-        android:text=""
-        android:textColor="@color/text_color_selected"
-        android:textSize="12sp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:background="@drawable/background_rectangle_shape"
+        android:backgroundTint="@color/white"
+        android:padding="@dimen/dimen_8dp"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/ivMarker"
+            android:layout_width="10dp"
+            android:layout_height="10dp"
+            android:layout_marginEnd="1dp"
+            android:src="@drawable/icon_time"
+            app:layout_constraintBottom_toBottomOf="@id/tvMarkerTime"
+            app:layout_constraintEnd_toStartOf="@id/tvMarkerTime"
+            app:layout_constraintHorizontal_chainStyle="packed"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/tvMarkerTime" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tvMarkerTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="1dp"
+            android:drawablePadding="2dp"
+            android:gravity="center"
+            android:textColor="#80000000"
+            android:textSize="10sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/ivMarker"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="12:00"
+            tools:ignore="SmallSp" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tvContent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="5dp"
+            android:ellipsize="end"
+            android:paddingStart="4dp"
+            android:paddingEnd="4dp"
+            android:singleLine="true"
+            android:text=""
+            android:textColor="@color/black"
+            android:textSize="10sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvMarkerTime"
+            tools:text="300"
+            tools:ignore="SmallSp" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <View
+        android:layout_width="12dp"
+        android:layout_height="12dp"
+        android:background="@drawable/background_marker_view"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:text="300" />
-
+        app:layout_constraintTop_toBottomOf="@id/clMarker" />
 </androidx.constraintlayout.widget.ConstraintLayout>

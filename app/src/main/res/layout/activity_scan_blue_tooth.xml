@@ -12,20 +12,32 @@
         android:layout_height="match_parent"
         tools:context=".ui.blueTooth.ScanBlueToothActivity">
 
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/tbScanBlueTooth"
+            style="@style/Widget.MaterialComponents.Toolbar.Primary"
+            android:layout_width="match_parent"
+            android:layout_height="?android:actionBarSize"
+            android:background="?attr/colorPrimary"
+            android:elevation="0dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:menu="@menu/menu_bluetooth_scan"
+            app:navigationIcon="@drawable/icon_back"
+            app:navigationIconTint="@color/white"
+            app:title="蓝牙扫描"
+            app:titleCentered="true"
+            app:titleTextAppearance="@style/tabTextAppearance"
+            app:titleTextColor="@color/white" />
+
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rvBlueTooth"
+            android:id="@+id/rvBLE"
             android:layout_width="match_parent"
             android:layout_height="0dp"
+            android:paddingStart="@dimen/dimen_16dp"
+            android:paddingEnd="@dimen/dimen_16dp"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            app:layout_constraintBottom_toTopOf="@id/mbScan"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/mbScan"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="扫描"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/rvBlueTooth" />
+            app:layout_constraintTop_toBottomOf="@+id/tbScanBlueTooth" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

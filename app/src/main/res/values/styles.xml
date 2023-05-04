@@ -14,4 +14,9 @@
         <item name="android:windowBackground">@drawable/rounded_all_small</item>
     </style>
 
+    <style name="tabTextAppearance">
+        <item name="android:textSize">18sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
 </resources>
