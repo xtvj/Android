@@ -1,36 +1,35 @@
 package io.github.xtvj.android.ui.blueTooth
 
 import android.Manifest
+import android.annotation.SuppressLint
 import android.bluetooth.BluetoothAdapter
 import android.bluetooth.le.BluetoothLeScanner
 import android.bluetooth.le.ScanCallback
+import android.bluetooth.le.ScanFilter
 import android.bluetooth.le.ScanResult
-import android.content.pm.PackageManager
+import android.bluetooth.le.ScanSettings
+import android.content.Intent
 import android.graphics.drawable.Animatable
+import android.os.Build
 import android.os.Bundle
+import android.os.ParcelUuid
 import android.view.MenuItem
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.widget.Toolbar
-import androidx.core.app.ActivityCompat
-import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import dagger.hilt.android.AndroidEntryPoint
 import io.github.xtvj.android.R
 import io.github.xtvj.android.base.BindingActivity
 import io.github.xtvj.android.databinding.ActivityScanBlueToothBinding
+import io.github.xtvj.android.utils.LogUtils.logs
 import io.github.xtvj.android.utils.ToastUtils.toast
-import permissions.dispatcher.NeedsPermission
-import permissions.dispatcher.OnNeverAskAgain
-import permissions.dispatcher.OnPermissionDenied
-import permissions.dispatcher.OnShowRationale
-import permissions.dispatcher.PermissionRequest
-import permissions.dispatcher.RuntimePermissions
 import javax.inject.Inject
 
 @AndroidEntryPoint
-@RuntimePermissions
 class ScanBlueToothActivity : BindingActivity<ActivityScanBlueToothBinding>(R.layout.activity_scan_blue_tooth), Toolbar.OnMenuItemClickListener {
 
     @Inject
     lateinit var bluetoothAdapter: BluetoothAdapter
+    private var isScanning = false
 
     private val bluetoothLeScanner: BluetoothLeScanner? by lazy {
         if (bluetoothAdapter.isEnabled) {
@@ -38,6 +37,10 @@ class ScanBlueToothActivity : BindingActivity<ActivityScanBlueToothBinding>(R.la
         } else {
             null
         }
+    }
+
+    private val adapter by lazy {
+        ScanResultsAdapter()
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -49,20 +52,17 @@ class ScanBlueToothActivity : BindingActivity<ActivityScanBlueToothBinding>(R.la
         binding.tbScanBlueTooth.apply {
             setOnMenuItemClickListener(this@ScanBlueToothActivity)
         }
+        binding.rvBLE.adapter = adapter
+        adapter.onItemClick = {
+
+        }
     }
 
     override fun onMenuItemClick(item: MenuItem?): Boolean {
         when (item?.itemId) {
             R.id.itemBlueToothRefresh -> {
                 if (bluetoothAdapter.isEnabled) {
-                    val drawable = item.icon
-                    if (drawable is Animatable) {
-                        drawable.start()
-                    }
-
-
-                    bluetoothLeScanner?.startScan(leScanCallback)
-
+                    scanBlueTooth()
                 } else {
                     toast("请打开蓝牙功能")
                 }
@@ -73,42 +73,71 @@ class ScanBlueToothActivity : BindingActivity<ActivityScanBlueToothBinding>(R.la
     }
 
     private val leScanCallback: ScanCallback = object : ScanCallback() {
+        @SuppressLint("MissingPermission")
         override fun onScanResult(callbackType: Int, result: ScanResult) {
             super.onScanResult(callbackType, result)
+            logs("扫描到蓝牙：${result.device.name} --- ${result.device.address}")
+            adapter.addScanResult(result)
         }
     }
 
+    private fun scanBlueTooth() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
+            requestMultiplePermissions.launch(
+                arrayOf(
+                    Manifest.permission.BLUETOOTH_SCAN,
+                    Manifest.permission.BLUETOOTH_CONNECT
+                )
+            )
+        } else {
+            val enableBtIntent = Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE)
+            requestBluetooth.launch(enableBtIntent)
+        }
+    }
 
-//    @OnShowRationale(
-//        Manifest.permission.BLUETOOTH_SCAN
-//    )
-//    fun generatePermission(request: PermissionRequest) {
-//        MaterialAlertDialogBuilder(this)
-//            .setPositiveButton("允许") { _, _ -> request.proceed() }
-//            .setNegativeButton("拒绝") { _, _ -> request.cancel() }
-//            .setCancelable(false)
-//            .setTitle("权限申请")
-//            .setMessage("要先赋予App定位才能定位")
-//            .create().show()
-//    }
-//
-//    @OnPermissionDenied(
-//        Manifest.permission.BLUETOOTH_SCAN
-//    )
-//    fun noRecordPermission() {
-//        applicationContext?.toast("没有获得定位权限")
-//    }
-//
-//    @OnNeverAskAgain(
-//        Manifest.permission.BLUETOOTH_SCAN
-//    )
-//    fun onNeverAsk() {
-//        applicationContext?.toast("定位权限被拒绝，请赋予权限。")
-//    }
-//
-//    @NeedsPermission(
-//        Manifest.permission.BLUETOOTH_SCAN)
-//    fun startLocation() {
-//    }
+    private val scanFilter = ScanFilter.Builder().setServiceUuid(ParcelUuid.fromString("6e403587-b5a3-f393-e0a9-e50e24dcca9e")).build()
+    private val scanSettings = ScanSettings.Builder()
+        .setScanMode(ScanSettings.SCAN_MODE_LOW_LATENCY)
+        .setCallbackType(ScanSettings.CALLBACK_TYPE_ALL_MATCHES)
+        .build()
+
+    @SuppressLint("MissingPermission")
+    private val requestMultiplePermissions =
+        registerForActivityResult(ActivityResultContracts.RequestMultiplePermissions()) { permissions ->
+            val temp = permissions.entries.find {
+                !it.value
+            }
+            if (temp == null) {
+                if (isScanning) {
+                    bluetoothLeScanner?.stopScan(leScanCallback)
+                    switchToolbarMenuAnimation(false)
+                } else {
+                    switchToolbarMenuAnimation(true)
+                    bluetoothLeScanner?.startScan(listOf(scanFilter), scanSettings, leScanCallback)
+                }
+                isScanning = !isScanning
+            }
+        }
+
+    @SuppressLint("MissingPermission")
+    private var requestBluetooth = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
+        if (result.resultCode == RESULT_OK) {
+            if (isScanning) {
+                bluetoothLeScanner?.stopScan(leScanCallback)
+                switchToolbarMenuAnimation(false)
+            } else {
+                switchToolbarMenuAnimation(true)
+                bluetoothLeScanner?.startScan(listOf(scanFilter), scanSettings, leScanCallback)
+            }
+            isScanning = !isScanning
+        }
+    }
+
+    private fun switchToolbarMenuAnimation(start: Boolean) {
+        val drawable = binding.tbScanBlueTooth.menu.findItem(R.id.itemBlueToothRefresh)?.icon
+        if (drawable is Animatable) {
+            if (start) drawable.start() else drawable.stop()
+        }
+    }
 
 }
