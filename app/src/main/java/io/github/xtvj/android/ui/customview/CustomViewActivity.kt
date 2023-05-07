@@ -20,8 +20,7 @@ import io.github.xtvj.android.base.BaseActivity
 import io.github.xtvj.android.customView.MyMarkerView
 import io.github.xtvj.android.databinding.ActivityCustomViewBinding
 import io.github.xtvj.android.interfaces.OnClickHandle
-import io.github.xtvj.android.utils.LogUtils.logs
-import io.github.xtvj.android.utils.ToastUtils.toast
+import io.github.xtvj.android.utils.ContextUtils.toast
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
@@ -119,7 +118,7 @@ class CustomViewActivity : BaseActivity<ActivityCustomViewBinding>(R.layout.acti
     }
 
     private fun setData(list: List<Int>, lineChart: LineChart) {
-        lineChart.xAxis.axisMaximum = list.size.toFloat()//X轴最大数值
+        lineChart.xAxis.axisMaximum = (list.size - 1).toFloat()//X轴最大数值
         val values = list.mapIndexed { index, i ->
             Entry(index.toFloat(), i.toFloat())
         }

@@ -4,7 +4,7 @@ import android.content.Context
 import android.widget.Toast
 import androidx.annotation.StringRes
 
-object ToastUtils {
+object ContextUtils {
     fun Context.toast(@StringRes res: Int) = Toast.makeText(this.applicationContext, res, Toast.LENGTH_SHORT).show()
     fun Context.toastLong(@StringRes res: Int) = Toast.makeText(this.applicationContext, res, Toast.LENGTH_LONG).show()
 
