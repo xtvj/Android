@@ -21,8 +21,10 @@ import io.github.xtvj.android.customView.MyMarkerView
 import io.github.xtvj.android.databinding.ActivityCustomViewBinding
 import io.github.xtvj.android.interfaces.OnClickHandle
 import io.github.xtvj.android.utils.ContextUtils.toast
+import io.github.xtvj.android.utils.LogUtils.logs
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import kotlin.random.Random
 
 
 @AndroidEntryPoint
@@ -58,6 +60,10 @@ class CustomViewActivity : BaseActivity<ActivityCustomViewBinding>(R.layout.acti
             listOf(90, 90, 88, 83, 89, 90, 88, 85, 82, 87, 83, 86, 86, 84, 83, 0, 24, 71, 65, 43, 52, 73, 43, 15).shuffled(),
             binding.lineChart
         )
+        binding.frequencyView.frequency_progress = Random.nextDouble(0.1, 0.9).toFloat()
+        val start = Random.nextDouble(0.0, 340.0).toFloat()
+        val end = start + Random.nextDouble(0.0, 340.0).toFloat()
+        binding.sleepStatisticsView.setSweepAngle(start, end)
     }
 
     //初始化chart

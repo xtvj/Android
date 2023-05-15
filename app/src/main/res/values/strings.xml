@@ -1,4 +1,7 @@
 <resources>
     <string name="app_name">Android</string>
     <string name="unit_format">%1$s 次/分</string>
+
+    <!--内存泄露检测工具配置-->
+    <string name="leak_canary_test_class_name">assertk.Assert</string>
 </resources>

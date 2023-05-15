@@ -14,25 +14,44 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:fitsSystemWindows="true"
+        android:padding="@dimen/dimen_16dp"
         tools:context=".ui.animatedVectorDrawable.AnimatedVectorDrawableActivity">
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/mbAnimated"
             style="@style/minButton"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="0dp"
             android:onClick="@{(v) -> onClickHandle.onClick(v)}"
             app:icon="@drawable/avd_right_arrow_to_down_arrow"
             app:iconGravity="textStart"
-            app:strokeWidth="1dp"
             app:iconSize="@dimen/dimen_48dp"
             app:iconTint="@android:color/transparent"
             app:iconTintMode="add"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintDimensionRatio="H,1:1"
-            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintWidth_percent="0.18"
+            app:rippleColor="@color/text_color_ccc"
+            app:strokeWidth="1dp" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/mbAnimatedRefresh"
+            style="@style/minButton"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="@dimen/dimen_8dp"
+            android:onClick="@{(v) -> onClickHandle.onClick(v)}"
+            app:backgroundTint="@color/purple_200"
+            app:icon="@drawable/icon_refresh_infinite"
+            app:iconGravity="textStart"
+            app:iconSize="@dimen/dimen_48dp"
+            app:iconTint="@android:color/transparent"
+            app:iconTintMode="add"
+            app:layout_constraintDimensionRatio="H,1:1"
+            app:layout_constraintStart_toEndOf="@id/mbAnimated"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintWidth_percent="0.18"
             app:rippleColor="@color/text_color_ccc" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

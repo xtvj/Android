@@ -35,8 +35,12 @@ class AnimatedVectorDrawableActivity : BaseActivity<ActivityAnimatedVectorDrawab
                     resources.getDrawable(R.drawable.avd_down_arrow_to_right_arrow, null)
                 }
                 binding.mbAnimated.icon = drawable
-                MyDrawableUtils().startAnimate(drawable)
+                MyDrawableUtils.startAnimate(drawable)
                 right = !right
+            }
+            binding.mbAnimatedRefresh ->{
+                val drawable = binding.mbAnimatedRefresh.icon
+                MyDrawableUtils.startAnimate(drawable)
             }
         }
     }

@@ -22,6 +22,7 @@ import io.github.xtvj.android.base.BindingActivity
 import io.github.xtvj.android.databinding.ActivityScanBlueToothBinding
 import io.github.xtvj.android.utils.LogUtils.logs
 import io.github.xtvj.android.utils.ContextUtils.toast
+import io.github.xtvj.android.utils.MyDrawableUtils
 import javax.inject.Inject
 
 @AndroidEntryPoint
@@ -95,7 +96,7 @@ class ScanBlueToothActivity : BindingActivity<ActivityScanBlueToothBinding>(R.la
         }
     }
 
-//    private val scanFilter = ScanFilter.Builder().setServiceUuid(ParcelUuid.fromString("6e403587-b5a3-f393-e0a9-e50e24dcca9e")).build()
+    //    private val scanFilter = ScanFilter.Builder().setServiceUuid(ParcelUuid.fromString("6e403587-b5a3-f393-e0a9-e50e24dcca9e")).build()
     private val scanFilter = ScanFilter.Builder().build()
 
     private val scanSettings = ScanSettings.Builder()
@@ -140,6 +141,13 @@ class ScanBlueToothActivity : BindingActivity<ActivityScanBlueToothBinding>(R.la
         val drawable = binding.tbScanBlueTooth.menu.findItem(R.id.itemBlueToothRefresh)?.icon
         if (drawable is Animatable) {
             if (start) drawable.start() else drawable.stop()
+        }
+    }
+
+    override fun onPause() {
+        super.onPause()
+        if (isScanning && bluetoothAdapter.isEnabled) {
+            scanBlueTooth()
         }
     }
 

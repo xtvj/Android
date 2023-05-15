@@ -2,9 +2,9 @@ package io.github.xtvj.android.customView
 
 import android.annotation.SuppressLint
 import android.content.Context
+import android.content.res.Resources
 import android.graphics.Canvas
 import android.graphics.Color
-import android.graphics.DashPathEffect
 import android.graphics.Paint
 import android.graphics.RectF
 import android.util.AttributeSet
@@ -33,23 +33,21 @@ class SleepStatisticsView : View {
     private val sun = resources.getDrawable(R.drawable.icon_tsun2, null)
     private val moon = resources.getDrawable(R.drawable.icon_tmoom2, null)
 
-    var startAngle = 75f
-        set(value) {
-            field = value
-            invalidate()
-        }
-    var endAngle = 215f
-        set(value) {
-            field = value
-            invalidate()
-        }
+    private var startAngle = 0f
+    private var endAngle = 0f
 
-    var outsetCircleWith = 60f
+    fun setSweepAngle(start: Float, end: Float) {
+        startAngle = start
+        endAngle = end
+        invalidate()
+    }
+
+    var outsetCircleWith = 0.053333335f * Resources.getSystem().displayMetrics.widthPixels
         set(value) {
             field = value
             invalidate()
         }
-    var insetCircleWidth = 25f
+    var insetCircleWidth = 0.013333334f * Resources.getSystem().displayMetrics.widthPixels
         set(value) {
             field = value
             invalidate()
@@ -101,7 +99,7 @@ class SleepStatisticsView : View {
         )
         canvas?.save()
         //只有开始有结果值不相同时才绘制
-        if (abs(endAngle - startAngle) > 0){
+        if (abs(endAngle - startAngle) > 0) {
             //画进度圆
             outsetPaint.color = outsetCircleColor
             canvas?.drawArc(
@@ -164,10 +162,10 @@ class SleepStatisticsView : View {
         outsetPaint.color = outsetCircleBackgroundColor
         moonOrSunRectF.apply {
             set(
-                width - outsetCircleWith + outsetCircleWith*moonOrSunPercent,
-                height.toFloat() / 2 -  outsetCircleWith/2 + outsetCircleWith*moonOrSunPercent,
-                width -outsetCircleWith*moonOrSunPercent,
-                height.toFloat() / 2 + outsetCircleWith/2 - outsetCircleWith*moonOrSunPercent
+                width - outsetCircleWith + outsetCircleWith * moonOrSunPercent,
+                height.toFloat() / 2 - outsetCircleWith / 2 + outsetCircleWith * moonOrSunPercent,
+                width - outsetCircleWith * moonOrSunPercent,
+                height.toFloat() / 2 + outsetCircleWith / 2 - outsetCircleWith * moonOrSunPercent
             )
         }
     }
