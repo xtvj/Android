@@ -7,38 +7,47 @@
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
+        android:background="@android:color/transparent"
         android:layout_height="wrap_content">
 
-        <com.google.android.material.progressindicator.CircularProgressIndicator
-            android:id="@+id/pgb_loading"
-            android:layout_width="wrap_content"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:indeterminate="true"
-            app:indicatorSize="@dimen/dimen_64dp"
+            android:background="@drawable/bg_progress_dialog"
             app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintDimensionRatio="H,1:1"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:indicatorColor="@color/sub_text_color"
-            app:trackColor="@color/text_color_ccc" />
+            app:layout_constraintTop_toTopOf="parent">
 
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/tv_loading"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/dimen_8dp"
-            android:layout_marginBottom="@dimen/dimen_8dp"
-            android:gravity="center"
-            android:paddingStart="@dimen/dimen_48dp"
-            android:paddingEnd="@dimen/dimen_48dp"
-            android:text="加载中……"
-            android:textColor="@color/text_color_ccc"
-            android:textSize="15sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/pgb_loading" />
+            <com.google.android.material.progressindicator.CircularProgressIndicator
+                android:id="@+id/pgbLoading"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:indeterminate="true"
+                app:indicatorColor="@color/sub_text_color"
+                app:indicatorSize="64dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:trackColor="@color/white" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tvLoading"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/dimen_8dp"
+                android:autoSizeTextType="uniform"
+                android:gravity="center"
+                android:text="加载中……"
+                android:textColor="@color/white"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/pgbLoading" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
