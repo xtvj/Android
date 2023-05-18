@@ -32,7 +32,6 @@
         <activity
             android:name=".ui.navigationView.NavigationViewActivity"
             android:exported="false"
-            android:label="导航测试"
             android:theme="@style/Theme.Android.Navigation" />
         <activity
             android:name=".ui.customview.CustomViewActivity"
@@ -44,7 +43,6 @@
             android:name=".ui.animatedVectorDrawable.AnimatedVectorDrawableActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:exported="false"
-            android:label="animated_vector_drawable"
             android:launchMode="singleTask"
             android:theme="@style/Theme.Android"
             android:windowSoftInputMode="stateHidden|adjustResize" />
@@ -52,7 +50,6 @@
             android:name=".ui.welcome.WelcomeActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:exported="true"
-            android:label="activity_welcome"
             android:theme="@style/Theme.Android">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

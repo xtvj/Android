@@ -8,7 +8,11 @@ import androidx.databinding.DataBindingUtil.setContentView
 import io.github.xtvj.android.R
 import io.github.xtvj.android.databinding.DialogLoadingBinding
 
-class LoadingAlertDialog(context: Context, var message: String = "加载中……", @StyleRes themeResId: Int = R.style.dialog) : AlertDialog(context, themeResId) {
+class LoadingAlertDialog(
+    context: Context,
+    var message: String = "加载中……",
+    @StyleRes themeResId: Int = R.style.dialog
+) : AlertDialog(context, themeResId) {
 
     private lateinit var binding: DialogLoadingBinding
 
@@ -19,13 +23,13 @@ class LoadingAlertDialog(context: Context, var message: String = "加载中…�
         initView()
     }
 
-    private fun initView(){
+    private fun initView() {
         binding.tvLoading.text = message
     }
 
-    fun changeMessage(message: String){
+    fun changeMessage(message: String) {
         this.message = message
-        if (isShowing){
+        if (isShowing) {
             binding.tvLoading.text = message
         }
     }
