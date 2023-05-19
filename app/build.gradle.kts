@@ -1,11 +1,10 @@
-@Suppress("DSL_SCOPE_VIOLATION") // TODO: Remove once KTIJ-19369 is fixed
 plugins {
-    alias(libs.plugins.com.android.application)
-    alias(libs.plugins.org.jetbrains.kotlin.android)
-    alias(libs.plugins.com.google.dagger.hilt.android)
-    alias(libs.plugins.androidx.navigation.safeargs.kotlin)
-    alias(libs.plugins.kotlin.kapt)
-    alias(libs.plugins.kotlin.parcelize)
+    id(libs.plugins.com.android.application.get().pluginId)
+    id(libs.plugins.org.jetbrains.kotlin.android.get().pluginId)
+    id(libs.plugins.com.google.dagger.hilt.android.get().pluginId)
+    id(libs.plugins.androidx.navigation.safeargs.kotlin.get().pluginId)
+    id(libs.plugins.kotlin.parcelize.get().pluginId)
+    id(libs.plugins.devtools.ksp.get().pluginId)
 }
 
 android {
@@ -20,6 +19,9 @@ android {
         versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        vectorDrawables {
+            useSupportLibrary = true
+        }
     }
 
     buildTypes {
@@ -47,100 +49,83 @@ android {
 
 dependencies {
 
-    implementation ("androidx.core:core-ktx:1.10.1")
-    implementation ("androidx.appcompat:appcompat:1.6.1")
-    implementation ("com.google.android.material:material:1.9.0")
-    implementation ("androidx.constraintlayout:constraintlayout:2.1.4")
-    testImplementation ("junit:junit:4.13.2")
-    androidTestImplementation ("androidx.test.ext:junit:1.1.5")
-    androidTestImplementation ("androidx.test.espresso:espresso-core:3.5.1")
+    implementation (libs.androidx.core.ktx)
+    implementation (libs.androidx.appcompat)
+    implementation (libs.material)
+    implementation (libs.androidx.constraintlayout)
+    testImplementation (libs.junit)
+    androidTestImplementation (libs.androidx.junit)
+    androidTestImplementation (libs.androidx.espresso.core)
 
-    implementation ("androidx.fragment:fragment-ktx:1.5.7")
-    implementation ("androidx.activity:activity-ktx:1.7.1")
-    implementation ("androidx.recyclerview:recyclerview:1.3.0")
+    implementation (libs.androidx.fragment.ktx)
+    implementation (libs.androidx.activity.ktx)
+    implementation (libs.androidx.recyclerview)
 
-    implementation ("androidx.recyclerview:recyclerview-selection:1.1.0")
+    implementation (libs.androidx.recyclerview.selection)
 
     //协程
-    implementation ("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.0")
+    implementation (libs.kotlinx.coroutines.android)
 
     //依赖注入
-    implementation ("com.google.dagger:hilt-android:2.46.1")
-    kapt ("com.google.dagger:hilt-compiler:2.46.1")
+    implementation (libs.hilt.android)
+    ksp (libs.hilt.compiler)
 
-
-    implementation ("androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.1")
-    implementation ("androidx.lifecycle:lifecycle-livedata-ktx:2.6.1")
-    implementation ("androidx.lifecycle:lifecycle-common-java8:2.6.1")
+    implementation (libs.androidx.lifecycle.viewmodel.ktx)
+    implementation (libs.androidx.lifecycle.livedata.ktx)
+    implementation (libs.androidx.lifecycle.common.java8)
+    implementation (libs.androidx.lifecycle.viewmodel.savedstate)
     // optional - Test helpers for LiveData
-    testImplementation ("androidx.arch.core:core-testing:2.2.0")
+    testImplementation (libs.androidx.core.testing)
     // optional - Test helpers for Lifecycle runtime
-    testImplementation ("androidx.lifecycle:lifecycle-runtime-testing:2.6.1")
-    implementation ("androidx.lifecycle:lifecycle-viewmodel-savedstate:2.6.1")
-    // optional - helpers for implementing LifecycleOwner in a Service
-//    implementation "androidx.lifecycle:lifecycle-service:$lifecycle_version"
-    // optional - ProcessLifecycleOwner provides a lifecycle for the whole application process
-//    implementation "androidx.lifecycle:lifecycle-process:$lifecycle_version"
+    testImplementation (libs.androidx.lifecycle.runtime.testing)
 
-    implementation ("androidx.room:room-ktx:2.5.1")
-    implementation ("androidx.room:room-runtime:2.5.1")
-    implementation ("androidx.room:room-paging:2.5.1")
-    kapt ("androidx.room:room-compiler:2.5.1")
-    testImplementation ("androidx.room:room-testing:2.5.1")
+    implementation (libs.androidx.room.ktx)
+    implementation (libs.androidx.room.runtime)
+    implementation (libs.androidx.room.room.paging)
+    ksp (libs.androidx.room.compiler)
+    testImplementation (libs.androidx.room.testing)
 
     //Paging 3
-    implementation ("androidx.paging:paging-runtime-ktx:3.1.1")
+    implementation (libs.androidx.paging.runtime.ktx)
 
     //startup
-    implementation ("androidx.startup:startup-runtime:1.1.1")
+    implementation (libs.androidx.startup.runtime)
 
     //log
-    implementation ("com.jakewharton.timber:timber:5.0.1")
+    implementation (libs.timber)
 
     //net
-    implementation ("com.squareup.okhttp3:okhttp:5.0.0-alpha.11")
-    implementation ("com.squareup.okhttp3:logging-interceptor:5.0.0-alpha.11")
-    implementation ("com.squareup.retrofit2:retrofit:2.9.0")
-    implementation ("com.squareup.retrofit2:converter-moshi:2.9.0")
-    implementation ("com.squareup.moshi:moshi-kotlin:1.14.0")
-//    implementation "com.squareup.okhttp3:okhttp-sse:4.10.0"
+    implementation (libs.okhttp)
+    implementation (libs.logging.interceptor)
+    implementation (libs.retrofit)
+    implementation (libs.converter.moshi)
+    implementation (libs.moshi.kotlin)
 
     //retrofit封装工具
-    implementation ("com.github.skydoves:sandwich:1.3.6")
+    implementation (libs.sandwich)
 
     //data store
-    implementation ("androidx.datastore:datastore-preferences:1.0.0")
+    implementation (libs.androidx.datastore.preferences)
 
     //swipe refresh layout
-    implementation ("androidx.swiperefreshlayout:swiperefreshlayout:1.1.0")
+    implementation (libs.androidx.swiperefreshlayout)
 
     // Navigation
-    implementation ("androidx.navigation:navigation-fragment-ktx:2.5.3")
-    implementation ("androidx.navigation:navigation-ui-ktx:2.5.3")
-    androidTestImplementation ("androidx.navigation:navigation-testing:2.5.3")
+    implementation (libs.androidx.navigation.fragment.ktx)
+    implementation (libs.androidx.navigation.ui.ktx)
+    androidTestImplementation (libs.androidx.navigation.testing)
     // Feature module Support
-    implementation ("androidx.navigation:navigation-dynamic-features-fragment:2.5.3")
-
-    //权限管理
-    implementation ("com.github.permissions-dispatcher:permissionsdispatcher:4.9.2")
-    kapt ("com.github.permissions-dispatcher:permissionsdispatcher-processor:4.9.2")
+    implementation (libs.androidx.navigation.dynamic.features.fragment)
 
     //flexbox
-    implementation ("com.google.android.flexbox:flexbox:3.0.0")
+    implementation (libs.flexbox)
 
     //coil图片加载
-    implementation ("io.coil-kt:coil:2.3.0")
-    implementation ("io.coil-kt:coil-gif:2.3.0")
-    implementation ("io.coil-kt:coil-svg:2.3.0")
-    implementation ("io.coil-kt:coil-video:2.3.0")
+    implementation (libs.bundles.coil)
 
     //图表
-    implementation ("com.github.AppDevNext:AndroidChart:3.1.0.15")
+    implementation (libs.androidChart)
 
     //内存检测
-    debugImplementation ("com.squareup.leakcanary:leakcanary-android:2.10")
+    debugImplementation (libs.leakcanary.android)
 }
-// Allow references to generated code
-//kapt {
-//    correctErrorTypes = true
-//}
