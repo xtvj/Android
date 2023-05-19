@@ -4,7 +4,8 @@ plugins {
     id(libs.plugins.com.google.dagger.hilt.android.get().pluginId)
     id(libs.plugins.androidx.navigation.safeargs.kotlin.get().pluginId)
     id(libs.plugins.kotlin.parcelize.get().pluginId)
-    id(libs.plugins.devtools.ksp.get().pluginId)
+    id(libs.plugins.kotlin.kapt.get().pluginId)
+//    id(libs.plugins.devtools.ksp.get().pluginId)
 }
 
 android {
@@ -44,6 +45,7 @@ android {
     buildFeatures {
         dataBinding = true
         viewBinding = true
+        buildConfig = true
     }
 }
 
@@ -68,7 +70,7 @@ dependencies {
 
     //依赖注入
     implementation (libs.hilt.android)
-    ksp (libs.hilt.compiler)
+    kapt (libs.hilt.compiler)
 
     implementation (libs.androidx.lifecycle.viewmodel.ktx)
     implementation (libs.androidx.lifecycle.livedata.ktx)
@@ -82,7 +84,7 @@ dependencies {
     implementation (libs.androidx.room.ktx)
     implementation (libs.androidx.room.runtime)
     implementation (libs.androidx.room.room.paging)
-    ksp (libs.androidx.room.compiler)
+    kapt (libs.androidx.room.compiler)
     testImplementation (libs.androidx.room.testing)
 
     //Paging 3
@@ -128,4 +130,8 @@ dependencies {
 
     //内存检测
     debugImplementation (libs.leakcanary.android)
+}
+// Allow references to generated code
+kapt {
+    correctErrorTypes = true
 }
