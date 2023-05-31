@@ -28,5 +28,11 @@
         <item name="android:windowBackground">@android:color/transparent</item>
     </style>
 
+    <style name="SlidingButton">
+        <item name="sliding_button_width">@dimen/dimen_48dp</item>
+        <item name="sliding_button_height">@dimen/dimen_48dp</item>
+        <item name="sliding_button_icon">@drawable/ic_default_slide_icon_new</item>
+        <item name="sliding_button_icon_tint">?attr/colorAccent</item>
+    </style>
 
 </resources>

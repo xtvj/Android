@@ -17,6 +17,7 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:paddingBottom="120dp"
             tools:context=".ui.customview.CustomViewActivity">
 
             <io.github.xtvj.android.customView.CheckCircleView
@@ -82,6 +83,39 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/statsSliderView"
                 app:layout_constraintWidth_percent="0.75" />
+
+            <io.github.xtvj.android.customView.DampingReboundFrameLayout
+                android:id="@+id/dampingFrame"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:background="@drawable/background_rectangle_stroke"
+                app:layout_constraintDimensionRatio="H,1:1"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/lineChart"
+                app:layout_constraintWidth_percent="0.75">
+
+                <View
+                    android:id="@+id/mbTest"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:layout_gravity="center"
+                    android:background="@color/purple_700" />
+
+            </io.github.xtvj.android.customView.DampingReboundFrameLayout>
+
+        <io.github.xtvj.android.customView.SlidingButton
+            android:layout_width="172dp"
+            android:layout_height="@dimen/dimen_48dp"
+            android:layout_marginTop="@dimen/dimen_48dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/dampingFrame"
+            app:sliding_button_height="@dimen/dimen_48dp"
+            app:sliding_button_icon="@drawable/ic_default_slide_icon_new"
+            app:sliding_button_width="@dimen/dimen_48dp"
+            app:sliding_trackBackground="@drawable/background_slider"/>
+
+
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
 
