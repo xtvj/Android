@@ -1,6 +1,6 @@
 [versions]
 activity-ktx = "1.7.1"
-agp = "8.1.0-beta03"
+agp = "8.1.0-beta04"
 androidChart = "3.1.0.15"
 androidx-junit = "1.1.5"
 appcompat = "1.6.1"
