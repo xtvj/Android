@@ -20,6 +20,7 @@ class LoadingAlertDialog(
         super.onCreate(savedInstanceState)
         binding = DialogLoadingBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        setCancelable(false)
         initView()
     }
 

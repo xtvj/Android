@@ -10,7 +10,7 @@ import io.github.xtvj.android.R
 import io.github.xtvj.android.base.BaseActivity
 import io.github.xtvj.android.databinding.ActivityMainBinding
 import io.github.xtvj.android.ui.animatedVectorDrawable.AnimatedVectorDrawableActivity
-import io.github.xtvj.android.ui.blueTooth.ScanBlueToothActivity
+import io.github.xtvj.android.ui.blueTooth.scan.ScanBlueToothActivity
 import io.github.xtvj.android.ui.customview.CustomViewActivity
 import io.github.xtvj.android.ui.navigationView.NavigationViewActivity
 import io.github.xtvj.android.utils.GridSpaceItemDecoration

@@ -1,8 +1,8 @@
 plugins {
-    id(libs.plugins.com.android.application.get().pluginId)
-    id(libs.plugins.org.jetbrains.kotlin.android.get().pluginId)
-    id(libs.plugins.com.google.dagger.hilt.android.get().pluginId)
-    id(libs.plugins.androidx.navigation.safeargs.kotlin.get().pluginId)
+    alias(libs.plugins.com.android.application)
+    alias(libs.plugins.org.jetbrains.kotlin.android)
+    alias(libs.plugins.com.google.dagger.hilt.android)
+    alias(libs.plugins.androidx.navigation.safeargs.kotlin)
     id(libs.plugins.kotlin.parcelize.get().pluginId)
     id(libs.plugins.kotlin.kapt.get().pluginId)
 //    id(libs.plugins.devtools.ksp.get().pluginId)
@@ -130,6 +130,10 @@ dependencies {
 
     //内存检测
     debugImplementation (libs.leakcanary.android)
+
+    //权限管理
+    implementation (libs.permissionsdispatcher)
+    kapt (libs.permissionsdispatcher.processor)
 }
 // Allow references to generated code
 kapt {

@@ -2,19 +2,30 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <!-- required for API 18 - 30 -->
+
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission
+        android:name="android.permission.ACCESS_FINE_LOCATION"
+        android:maxSdkVersion="32" />
+    <uses-permission
+        android:name="android.permission.NEARBY_WIFI_DEVICES"
+        android:usesPermissionFlags="neverForLocation"
+        tools:targetApi="s" /> <!-- required for API 18 - 30 -->
     <uses-permission
         android:name="android.permission.BLUETOOTH"
         android:maxSdkVersion="30" />
     <uses-permission
         android:name="android.permission.BLUETOOTH_ADMIN"
-        android:maxSdkVersion="30" />
-    <!-- API 31+ -->
+        android:maxSdkVersion="30" /> <!-- API 31+ -->
     <uses-permission android:name="android.permission.BLUETOOTH_CONNECT" />
     <uses-permission
         android:name="android.permission.BLUETOOTH_SCAN"
         android:usesPermissionFlags="neverForLocation"
         tools:targetApi="s" />
+
+    <uses-feature
+        android:name="android.hardware.bluetooth_le"
+        android:required="true" />
 
     <application
         android:name=".base.App"
@@ -27,8 +38,17 @@
         android:theme="@style/Theme.Android"
         tools:targetApi="31">
         <activity
-            android:name=".ui.blueTooth.ScanBlueToothActivity"
-            android:exported="false" />
+            android:name=".ui.blueTooth.connect.BleConnectActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:exported="false"
+            android:launchMode="singleTask"
+            android:windowSoftInputMode="stateHidden|adjustResize" />
+        <activity
+            android:name=".ui.blueTooth.scan.ScanBlueToothActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:exported="false"
+            android:launchMode="singleTask"
+            android:windowSoftInputMode="stateHidden|adjustResize" />
         <activity
             android:name=".ui.navigationView.NavigationViewActivity"
             android:exported="false"
