@@ -28,7 +28,6 @@ class SlidingButton : FrameLayout {
 
     private var middleOfButton = 0f
     private var endOfButton = 0f
-    private var startOfButton = 0f
 
     var buttonBackground: Drawable? = null
         set(value) {
@@ -92,13 +91,13 @@ class SlidingButton : FrameLayout {
     constructor(context: Context, attrs: AttributeSet?) : this(
         context,
         attrs,
-        R.attr.slidingButtonStyle
+        0
     )
 
     constructor(
         _context: Context,
         attrs: AttributeSet?,
-        defStyleInt: Int = R.attr.slidingButtonStyle
+        defStyleInt: Int
     ) : super(
         _context,
         attrs,
@@ -107,9 +106,7 @@ class SlidingButton : FrameLayout {
 
         val arr = context.obtainStyledAttributes(
             attrs,
-            R.styleable.SlidingButton,
-            defStyleInt,
-            R.style.SlidingButton
+            R.styleable.SlidingButton
         )
 
         val defaultButtonDrawable =
@@ -211,10 +208,8 @@ class SlidingButton : FrameLayout {
 
     override fun onSizeChanged(w: Int, h: Int, oldw: Int, oldh: Int) {
         super.onSizeChanged(w, h, oldw, oldh)
-        middleOfButton = w.toFloat()/2 - buttonWidth.toFloat()/2
-        endOfButton =
-            w.toFloat() - (buttonWidth.toFloat() + paddingEnd.toFloat() + paddingStart.toFloat())
-        startOfButton = paddingStart.toFloat()
+        middleOfButton = h.toFloat() / 2 - buttonHeight.toFloat() / 2
+        endOfButton = h.toFloat() - paddingBottom.toFloat()
     }
 
     override fun removeAllViews() = throw IllegalStateException("This method isn't allowed ")
@@ -229,21 +224,24 @@ class SlidingButton : FrameLayout {
         this.setOnTouchListener { _, event ->
             when (event.action) {
                 MotionEvent.ACTION_DOWN -> true
-                MotionEvent.ACTION_MOVE -> onMove(event, (paddingStart).toFloat(), endOfButton + buttonWidth)
+                MotionEvent.ACTION_MOVE -> onMove(
+                    event,
+                    (paddingTop).toFloat(),
+                    endOfButton
+                )
+
                 MotionEvent.ACTION_UP -> {
                     animatedToStart()
                     true
                 }
+
                 else -> true
             }
         }
     }
 
-    override fun performClick(): Boolean = super.performClick()
-
     private fun animatedToStart() {
-
-        val floatAnimator = ValueAnimator.ofFloat(slidingImage.x, middleOfButton)
+        val floatAnimator = ValueAnimator.ofFloat(slidingImage.y, middleOfButton)
         floatAnimator.addUpdateListener {
             updateSlidingXPosition(it.animatedValue as Float)
         }
@@ -263,17 +261,16 @@ class SlidingButton : FrameLayout {
     }
 
     private fun onMove(event: MotionEvent, start: Float, end: Float): Boolean {
-        if (event.x in start..end) {
-            updateSlidingXPosition(event.x)
+        if (event.y in start..end) {
+            updateSlidingXPosition(event.y)
             return true
         }
         return false
     }
 
-    private fun updateSlidingXPosition(x: Float) {
-        slidingImage.x = x
-        val percent = x / (endOfButton - paddingStart)
-
+    private fun updateSlidingXPosition(y: Float) {
+        slidingImage.y = y
+        val percent = y / (endOfButton - paddingTop - paddingBottom)
         slidingListener?.onSliding(percent)
     }
 

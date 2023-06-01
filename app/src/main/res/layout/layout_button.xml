@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_width="48dp"
+    android:layout_height="match_parent">
 
     <View
         android:id="@+id/slidingIndicator"
-        android:layout_width="match_parent"
-        android:layout_height="10dp"
-        android:layout_gravity="start|center_vertical"
+        android:layout_width="10dp"
+        android:layout_height="match_parent"
+        android:layout_gravity="center|center_vertical"
         android:clickable="false"
         android:focusableInTouchMode="false"
         android:visibility="visible"
@@ -16,8 +16,9 @@
 
     <ImageView
         android:id="@+id/slidingImage"
-        android:layout_width="wrap_content"
-        android:layout_height="@dimen/dimen_48dp"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:rotation="270"
         android:layout_gravity="center|center_vertical"
         android:scaleType="centerInside"
         tools:ignore="ContentDescription"

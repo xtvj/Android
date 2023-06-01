@@ -68,6 +68,5 @@
 
     </declare-styleable>
 
-    <attr name="slidingButtonStyle" format="reference" />
 
 </resources>
