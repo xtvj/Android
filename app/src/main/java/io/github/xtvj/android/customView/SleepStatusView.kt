@@ -92,14 +92,14 @@ class SleepStatusView : View {
         paint.isAntiAlias = true
     }
 
-    override fun onDraw(canvas: Canvas?) {
+    override fun onDraw(canvas: Canvas) {
         super.onDraw(canvas)
         start = 0f
         list.forEach { item ->
             paint.color = item.getStatusColor()
-            canvas?.drawRect(start * width, height * item.getStatusHeight(), (start + item.lengthPercent) * width, height.toFloat(), paint)
+            canvas.drawRect(start * width, height * item.getStatusHeight(), (start + item.lengthPercent) * width, height.toFloat(), paint)
             start += item.lengthPercent
-            canvas?.save()
+            canvas.save()
         }
     }
 

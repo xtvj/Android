@@ -146,7 +146,7 @@ class CheckCircleView : View {
         )
     }
 
-    override fun onDraw(canvas: Canvas?) {
+    override fun onDraw(canvas: Canvas) {
         super.onDraw(canvas)
 //        bgPaint.color = if (isPressed) checkForegroundColor else checkBackgroundColor
         bgPaint.textSize = 20f
@@ -155,27 +155,27 @@ class CheckCircleView : View {
         bgPaint.color = rgb(61, 175, 252)
         //最外层间隔圆环
         repeat(times.toInt()) {
-            canvas?.drawArc(
+            canvas.drawArc(
                 rectF, radianStart + it * 3,
                 2f, false, bgPaint
             )
         }
         //最外层连续圆环
-        canvas?.drawArc(
+        canvas.drawArc(
             rectF, radianEnd + 10,
             340 - (radianEnd - radianStart), false, bgPaint
         )
         bgPaint.strokeWidth = circleSecondWidth.toFloat()
         //第二个圆
-        canvas?.drawCircle(width.toFloat() / 2, height.toFloat() / 2, radiusSecond * min(width, height) / 2, bgPaint)
+        canvas.drawCircle(width.toFloat() / 2, height.toFloat() / 2, radiusSecond * min(width, height) / 2, bgPaint)
 
         //里面填充的圆
-        canvas?.drawCircle(width.toFloat() / 2, height.toFloat() / 2, radiusThird * min(width, height) / 2, insidePaint)
+        canvas.drawCircle(width.toFloat() / 2, height.toFloat() / 2, radiusThird * min(width, height) / 2, insidePaint)
         bgPaint.color = rgb(255, 255, 255)
         bgPaint.strokeWidth = circleFourthWidth.toFloat()
         //最里面三个圆环
         repeat(3) {
-            canvas?.drawArc(
+            canvas.drawArc(
                 insideRectF, (20 + (it) * 120).toFloat(),
                 100f, false, bgPaint
             )

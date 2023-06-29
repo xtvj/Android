@@ -104,12 +104,12 @@ class StatsSliderView : View {
         }
     }
 
-    override fun onDraw(canvas: Canvas?) {
+    override fun onDraw(canvas: Canvas) {
         super.onDraw(canvas)
         paint.strokeCap = Paint.Cap.ROUND
         paint.color = minValueColor
         //画左边线条
-        canvas?.drawRoundRect(
+        canvas.drawRoundRect(
             0f,
             yCenter - sliderHeight / 2,
             width.toFloat() * (normalStartValue - startValue) / (endValue - startValue),
@@ -118,10 +118,10 @@ class StatsSliderView : View {
             sliderHeight / 2,
             paint
         )
-        canvas?.save()
+        canvas.save()
         paint.color = maxValueColor
         //画右边线条
-        canvas?.drawRoundRect(
+        canvas.drawRoundRect(
             width.toFloat() * (normalEndValue - startValue) / (endValue - startValue),
             yCenter - sliderHeight / 2,
             width.toFloat(),
@@ -130,34 +130,34 @@ class StatsSliderView : View {
             sliderHeight / 2,
             paint
         )
-        canvas?.save()
+        canvas.save()
         paint.color = normalColor
         //相除时注意别被取int值了，不然一直是0或1，取float值正常
         //左边向左移动sliderHeight/2 右边向右移动sliderHeight/2 遮挡上面两个线条的圆弧
-        canvas?.drawRect(
+        canvas.drawRect(
             width.toFloat() * (normalStartValue - startValue) / (endValue - startValue) - sliderHeight / 2,
             yCenter - sliderHeight / 2,
             width.toFloat() * (normalEndValue - startValue) / (endValue - startValue) + sliderHeight / 2,
             yCenter + sliderHeight / 2, paint
         )
-        canvas?.save()
+        canvas.save()
         paint.color = Color.WHITE
         //左右两个白色圆
-        canvas?.drawCircle(firstCircle, yCenter, sliderHeight * 3 / 4, paint)
-        canvas?.drawCircle(secondCircle, yCenter, sliderHeight * 3 / 4, paint)
-        canvas?.save()
+        canvas.drawCircle(firstCircle, yCenter, sliderHeight * 3 / 4, paint)
+        canvas.drawCircle(secondCircle, yCenter, sliderHeight * 3 / 4, paint)
+        canvas.save()
         //左边小圆
         paint.color = minValueColor
-        canvas?.drawCircle(firstCircle, yCenter, sliderHeight / 3, paint)
-        canvas?.save()
+        canvas.drawCircle(firstCircle, yCenter, sliderHeight / 3, paint)
+        canvas.save()
         //右边小圆
         paint.color = maxValueColor
-        canvas?.drawCircle(secondCircle, yCenter, sliderHeight / 3, paint)
-        canvas?.save()
+        canvas.drawCircle(secondCircle, yCenter, sliderHeight / 3, paint)
+        canvas.save()
         paint.textSize = normalTextSize
         paint.color = Color.argb(127, 255, 255, 255)
         //左边正常值
-        canvas?.drawText(
+        canvas.drawText(
             normalStartValue.toString(),
             width.toFloat() * (normalStartValue - startValue) / (endValue - startValue) - sliderHeight / 2,
             //文字高度的一半 + Y轴中间点 + 半个线条高度 + 一个线条高度（文字与线条的间隔）
@@ -165,26 +165,26 @@ class StatsSliderView : View {
             paint
         )
         //右边正常值
-        canvas?.drawText(
+        canvas.drawText(
             normalEndValue.toString(),
             width.toFloat() * (normalEndValue - startValue) / (endValue - startValue) + sliderHeight / 2,
             (paint.fontMetrics.bottom - paint.fontMetrics.top) / 2 + yCenter + sliderHeight * 3 / 2,
             paint
         )
-        canvas?.save()
+        canvas.save()
         paint.textSize = valueTextSize
         paint.isFakeBoldText = true
         paint.color = Color.rgb(255, 149, 0)
 
-        canvas?.drawText(
+        canvas.drawText(
             minValue.toString(),
             firstCircle,
             (paint.fontMetrics.bottom - paint.fontMetrics.top) / 2 + yCenter + (17.5f).dpToPx,
             paint
         )
-        canvas?.save()
+        canvas.save()
         paint.color = maxValueColor
-        canvas?.drawText(
+        canvas.drawText(
             maxValue.toString(),
             secondCircle,
             (paint.fontMetrics.bottom - paint.fontMetrics.top) / 2 + yCenter + (17.5f).dpToPx,

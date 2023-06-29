@@ -10,12 +10,12 @@ plugins {
 
 android {
     namespace = "io.github.xtvj.android"
-    compileSdk = 33
+    compileSdk = 34
 
     defaultConfig {
         applicationId = "io.github.xtvj.android"
         minSdk = 26
-        targetSdk = 33
+        targetSdk = 34
         versionCode = 1
         versionName = "1.0"
 
@@ -134,6 +134,9 @@ dependencies {
     //权限管理
     implementation (libs.permissionsdispatcher)
     kapt (libs.permissionsdispatcher.processor)
+
+    //弹窗
+    implementation (libs.balloon)
 }
 // Allow references to generated code
 kapt {

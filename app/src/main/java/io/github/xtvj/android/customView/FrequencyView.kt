@@ -162,27 +162,27 @@ class FrequencyView : View {
         Shader.TileMode.MIRROR
     )
 
-    override fun onDraw(canvas: Canvas?) {
+    override fun onDraw(canvas: Canvas) {
         super.onDraw(canvas)
         circlePaint.shader = linearGradient
         //画最外层圆形分隔线
         repeat(19) {
-            canvas?.drawArc(
+            canvas.drawArc(
                 rectF, 180f + (it * 9.94).toFloat(),
                 1f, false, circlePaint
             )
         }
         //半圆弧
-        canvas?.drawArc(
+        canvas.drawArc(
             rectF2, 180f,
             180f, false, secondCirclePaint
         )
-        canvas?.save()
+        canvas.save()
         //以中心点旋转画布
-        canvas?.rotate(frequency_progress * 180, width.toFloat() / 2, height.toFloat() / 2)
+        canvas.rotate(frequency_progress * 180, width.toFloat() / 2, height.toFloat() / 2)
         //箭头，表示进度
-        canvas?.drawPath(path, arrowPaint)
-        canvas?.restore()
+        canvas.drawPath(path, arrowPaint)
+        canvas.restore()
     }
 
 }

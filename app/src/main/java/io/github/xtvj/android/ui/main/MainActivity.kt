@@ -13,6 +13,7 @@ import io.github.xtvj.android.ui.animatedVectorDrawable.AnimatedVectorDrawableAc
 import io.github.xtvj.android.ui.blueTooth.scan.ScanBlueToothActivity
 import io.github.xtvj.android.ui.customview.CustomViewActivity
 import io.github.xtvj.android.ui.navigationView.NavigationViewActivity
+import io.github.xtvj.android.ui.thirdPartDemo.ThirdPartDemoActivity
 import io.github.xtvj.android.utils.GridSpaceItemDecoration
 import io.github.xtvj.android.utils.ScreenUtils.dpToPx
 import kotlinx.coroutines.launch
@@ -24,7 +25,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
         MainAdapter()
     }
 
-    private val list = listOf("Animated\nDrawable", "自定义\nView", "导航", "蓝牙", "测试五")
+    private val list = listOf("Animated\nDrawable", "自定义\nView", "导航", "蓝牙", "第三方库示例")
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -36,7 +37,13 @@ class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
 
     private fun initView() {
         binding.rvMain.layoutManager = GridLayoutManager(this, 3)
-        binding.rvMain.addItemDecoration(GridSpaceItemDecoration(3, (16).dpToPx.toInt(), (16).dpToPx.toInt()))
+        binding.rvMain.addItemDecoration(
+            GridSpaceItemDecoration(
+                3,
+                (16).dpToPx.toInt(),
+                (16).dpToPx.toInt()
+            )
+        )
         binding.rvMain.adapter = adapter
         adapter.onItemClick = { _, position ->
             when (position) {
@@ -57,7 +64,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
                 }
 
                 4 -> {
-
+                    startActivity(Intent(this, ThirdPartDemoActivity::class.java))
                 }
             }
         }

@@ -90,37 +90,37 @@ class SleepStatisticsView : View {
     }
 
 
-    override fun onDraw(canvas: Canvas?) {
+    override fun onDraw(canvas: Canvas) {
         super.onDraw(canvas)
         outsetPaint.color = outsetCircleBackgroundColor
-        canvas?.drawArc(
+        canvas.drawArc(
             outsetCircleRectF, 0f,
             360f, false, outsetPaint
         )
-        canvas?.save()
+        canvas.save()
         //只有开始有结果值不相同时才绘制
         if (abs(endAngle - startAngle) > 0) {
             //画进度圆
             outsetPaint.color = outsetCircleColor
-            canvas?.drawArc(
+            canvas.drawArc(
                 outsetCircleRectF, startAngle,
                 endAngle - startAngle, false, outsetPaint
             )
-            canvas?.save()
+            canvas.save()
             //画月亮
-            canvas?.rotate(startAngle, width.toFloat() / 2, height.toFloat() / 2)
+            canvas.rotate(startAngle, width.toFloat() / 2, height.toFloat() / 2)
             moon.bounds = moonOrSunRectF.toRect()
-            canvas?.let {
+            canvas.let {
                 moon.draw(canvas)
             }
-            canvas?.restore()
+            canvas.restore()
             //画太阳
-            canvas?.rotate(endAngle, width.toFloat() / 2, height.toFloat() / 2)
+            canvas.rotate(endAngle, width.toFloat() / 2, height.toFloat() / 2)
             sun.bounds = moonOrSunRectF.toRect()
-            canvas?.let {
+            canvas.let {
                 sun.draw(canvas)
             }
-            canvas?.restore()
+            canvas.restore()
         }
         //画内圆
         repeat(48) {
@@ -131,11 +131,11 @@ class SleepStatisticsView : View {
                 insetPaint.strokeWidth = insetCircleWidth
                 insetPaint.color = insetCircleColor
             }
-            canvas?.drawArc(
+            canvas.drawArc(
                 insetCircleRectF, (it * 7.5).toFloat(),
                 1f, false, insetPaint
             )
-            canvas?.save()
+            canvas.save()
         }
 
     }
