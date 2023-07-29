@@ -4,22 +4,11 @@ import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.Menu
 import android.view.View
-import com.google.android.material.snackbar.Snackbar
-import com.google.android.material.navigation.NavigationView
-import androidx.navigation.findNavController
-import androidx.navigation.ui.AppBarConfiguration
-import androidx.navigation.ui.navigateUp
-import androidx.navigation.ui.setupActionBarWithNavController
-import androidx.navigation.ui.setupWithNavController
-import androidx.drawerlayout.widget.DrawerLayout
-import androidx.appcompat.app.AppCompatActivity
-import androidx.databinding.DataBindingUtil.bind
-import androidx.databinding.DataBindingUtil.setContentView
 import com.google.android.material.internal.EdgeToEdgeUtils
 import io.github.xtvj.android.R
-import io.github.xtvj.android.base.BaseActivity
 import io.github.xtvj.android.databinding.ActivityNavigationViewBinding
 import io.github.xtvj.android.interfaces.OnClickHandle
+import io.github.xtvj.common.base.BaseActivity
 
 class NavigationViewActivity : BaseActivity<ActivityNavigationViewBinding>(R.layout.activity_navigation_view), OnClickHandle {
 

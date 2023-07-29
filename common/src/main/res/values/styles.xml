@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="dialog" parent="@android:style/Theme.Dialog">
+        <item name="android:windowFrame">@null</item>
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:windowIsTranslucent">false</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:background">@android:color/transparent</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+    </style>
+
+
+    <style name="bottomSheetDialog" parent="ThemeOverlay.Material3.DayNight.BottomSheetDialog">
+        <item name="android:windowSoftInputMode">adjustResize</item>
+        <item name="android:windowIsFloating">false</item>
+        <item name="bottomSheetStyle">@style/bottomSheetModal</item>
+    </style>
+
+    <style name="bottomSheetModal" parent="Widget.Material3.BottomSheet.Modal">
+        <item name="shapeAppearance">@null</item>
+        <item name="shapeAppearanceOverlay">@null</item>
+    </style>
+
+    <style name="alertDialog" parent="Theme.MaterialComponents.Light.Dialog">
+        <item name="android:windowBackground">@drawable/rounded_all_small</item>
+    </style>
+
+</resources>

@@ -16,7 +16,7 @@ import android.widget.ImageView
 import androidx.annotation.*
 import androidx.core.content.ContextCompat
 import io.github.xtvj.android.R
-import io.github.xtvj.android.utils.ScreenUtils.dpToPx
+import io.github.xtvj.common.utils.ScreenUtils.dpToPx
 
 class SlidingButton : FrameLayout {
 

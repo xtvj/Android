@@ -1,16 +1,14 @@
 package io.github.xtvj.android.ui.animatedVectorDrawable
 
 import android.annotation.SuppressLint
-import android.graphics.drawable.Animatable
-import android.graphics.drawable.Drawable
 import android.os.Bundle
 import android.view.View
 import dagger.hilt.android.AndroidEntryPoint
 import io.github.xtvj.android.R
-import io.github.xtvj.android.base.BaseActivity
 import io.github.xtvj.android.databinding.ActivityAnimatedVectorDrawableBinding
 import io.github.xtvj.android.interfaces.OnClickHandle
 import io.github.xtvj.android.utils.MyDrawableUtils
+import io.github.xtvj.common.base.BaseActivity
 
 @AndroidEntryPoint
 class AnimatedVectorDrawableActivity : BaseActivity<ActivityAnimatedVectorDrawableBinding>(R.layout.activity_animated_vector_drawable), OnClickHandle {

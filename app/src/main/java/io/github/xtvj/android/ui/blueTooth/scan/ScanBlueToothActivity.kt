@@ -17,7 +17,7 @@ import io.github.xtvj.android.R
 import io.github.xtvj.android.databinding.ActivityScanBlueToothBinding
 import io.github.xtvj.android.ui.blueTooth.BlePermission
 import io.github.xtvj.android.ui.blueTooth.connect.BleConnectActivity
-import io.github.xtvj.android.utils.ContextUtils.toast
+import io.github.xtvj.common.utils.ContextUtils.toast
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 

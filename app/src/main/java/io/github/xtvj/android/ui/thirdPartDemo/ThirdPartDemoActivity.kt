@@ -2,15 +2,14 @@ package io.github.xtvj.android.ui.thirdPartDemo
 
 import android.os.Bundle
 import android.view.View
-import androidx.core.content.ContextCompat
 import com.skydoves.balloon.ArrowOrientation
 import com.skydoves.balloon.Balloon
 import com.skydoves.balloon.BalloonAnimation
 import dagger.hilt.android.AndroidEntryPoint
 import io.github.xtvj.android.R
-import io.github.xtvj.android.base.BaseActivity
 import io.github.xtvj.android.databinding.ActivityThirdPartDemoBinding
 import io.github.xtvj.android.interfaces.OnClickHandle
+import io.github.xtvj.common.base.BaseActivity
 
 
 @AndroidEntryPoint

@@ -16,12 +16,11 @@ import com.github.mikephil.charting.formatter.IAxisValueFormatter
 import com.github.mikephil.charting.formatter.IFillFormatter
 import dagger.hilt.android.AndroidEntryPoint
 import io.github.xtvj.android.R
-import io.github.xtvj.android.base.BaseActivity
 import io.github.xtvj.android.customView.MyMarkerView
 import io.github.xtvj.android.databinding.ActivityCustomViewBinding
 import io.github.xtvj.android.interfaces.OnClickHandle
-import io.github.xtvj.android.utils.ContextUtils.toast
-import io.github.xtvj.android.utils.LogUtils.logs
+import io.github.xtvj.common.base.BaseActivity
+import io.github.xtvj.common.utils.ContextUtils.toast
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlin.random.Random

@@ -11,8 +11,8 @@ import androidx.annotation.LayoutRes
 import androidx.annotation.RequiresApi
 import androidx.databinding.ViewDataBinding
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
-import io.github.xtvj.android.base.BaseActivity
-import io.github.xtvj.android.utils.ContextUtils.toast
+import io.github.xtvj.common.base.BaseActivity
+import io.github.xtvj.common.utils.ContextUtils.toast
 import permissions.dispatcher.NeedsPermission
 import permissions.dispatcher.OnShowRationale
 import permissions.dispatcher.PermissionRequest

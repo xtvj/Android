@@ -5,7 +5,6 @@ plugins {
     alias(libs.plugins.androidx.navigation.safeargs.kotlin)
     id(libs.plugins.kotlin.parcelize.get().pluginId)
     id(libs.plugins.kotlin.kapt.get().pluginId)
-//    id(libs.plugins.devtools.ksp.get().pluginId)
 }
 
 android {
@@ -47,98 +46,75 @@ android {
         viewBinding = true
         buildConfig = true
     }
+    lint {
+        // if true, stop the gradle build if errors are found
+        abortOnError = false
+        // set to true to have all release builds run lint on issues with severity=fatal
+        // and abort the build (controlled by abortOnError above) if fatal issues are found
+        checkReleaseBuilds = true
+        // if true, only report errors
+        ignoreWarnings = true
+        //忽略Every Initializer needs to be accompanied by a corresponding <meta-data> entry in the AndroidManifest.xml file
+        disable += mutableSetOf("EnsureInitializerMetadata")
+    }
 }
 
 dependencies {
 
-    implementation (libs.androidx.core.ktx)
-    implementation (libs.androidx.appcompat)
-    implementation (libs.material)
-    implementation (libs.androidx.constraintlayout)
-    testImplementation (libs.junit)
-    androidTestImplementation (libs.androidx.junit)
-    androidTestImplementation (libs.androidx.espresso.core)
+    implementation(project(":common"))
+    implementation(project(":network"))
 
-    implementation (libs.androidx.fragment.ktx)
-    implementation (libs.androidx.activity.ktx)
-    implementation (libs.androidx.recyclerview)
+    implementation(libs.bundles.ktxs)
+    implementation(libs.constraintlayout)
 
-    implementation (libs.androidx.recyclerview.selection)
+    testImplementation(libs.junit)
+    androidTestImplementation(libs.androidx.test.ext.junit)
+    androidTestImplementation(libs.espresso.core)
+
+    implementation(libs.hilt.android)
+    kapt(libs.hilt.compiler)
+
+    implementation(libs.bundles.recyclerview)
+    implementation(libs.bundles.lifecycle)
+    implementation(libs.bundles.navigation)
+
+    implementation(libs.bundles.room)
+    kapt(libs.androidx.room.compiler)
 
     //协程
-    implementation (libs.kotlinx.coroutines.android)
-
-    //依赖注入
-    implementation (libs.hilt.android)
-    kapt (libs.hilt.compiler)
-
-    implementation (libs.androidx.lifecycle.viewmodel.ktx)
-    implementation (libs.androidx.lifecycle.livedata.ktx)
-    implementation (libs.androidx.lifecycle.common.java8)
-    implementation (libs.androidx.lifecycle.viewmodel.savedstate)
-    // optional - Test helpers for LiveData
-    testImplementation (libs.androidx.core.testing)
-    // optional - Test helpers for Lifecycle runtime
-    testImplementation (libs.androidx.lifecycle.runtime.testing)
-
-    implementation (libs.androidx.room.ktx)
-    implementation (libs.androidx.room.runtime)
-    implementation (libs.androidx.room.room.paging)
-    kapt (libs.androidx.room.compiler)
-    testImplementation (libs.androidx.room.testing)
-
-    //Paging 3
-    implementation (libs.androidx.paging.runtime.ktx)
-
+    implementation(libs.kotlinx.coroutines.android)
     //startup
-    implementation (libs.androidx.startup.runtime)
-
-    //log
-    implementation (libs.timber)
-
-    //net
-    implementation (libs.okhttp)
-    implementation (libs.logging.interceptor)
-    implementation (libs.retrofit)
-    implementation (libs.converter.moshi)
-    implementation (libs.moshi.kotlin)
-
+    implementation(libs.androidx.startup.runtime)
+    //swipe refresh layout
+    implementation(libs.androidx.swiperefreshlayout)
     //retrofit封装工具
     implementation (libs.sandwich)
-
     //data store
     implementation (libs.androidx.datastore.preferences)
-
-    //swipe refresh layout
-    implementation (libs.androidx.swiperefreshlayout)
-
-    // Navigation
-    implementation (libs.androidx.navigation.fragment.ktx)
-    implementation (libs.androidx.navigation.ui.ktx)
-    androidTestImplementation (libs.androidx.navigation.testing)
-    // Feature module Support
-    implementation (libs.androidx.navigation.dynamic.features.fragment)
-
-    //flexbox
-    implementation (libs.flexbox)
-
-    //coil图片加载
-    implementation (libs.bundles.coil)
-
-    //图表
-    implementation (libs.androidChart)
-
-    //内存检测
-    debugImplementation (libs.leakcanary.android)
+    //kotlin标准库
+    implementation(libs.kotlin.stdlib)
+    //custom popup window
+    implementation (libs.balloon)
+    implementation(libs.bundles.okhttp)
+    implementation(libs.retrofit)
+    //二维码
+    implementation (libs.zxing.lite)
 
     //权限管理
     implementation (libs.permissionsdispatcher)
     kapt (libs.permissionsdispatcher.processor)
+    //Paging 3
+    implementation (libs.androidx.paging.runtime.ktx)
 
+    //图表
+    implementation (libs.androidChart)
     //弹窗
     implementation (libs.balloon)
 }
 // Allow references to generated code
 kapt {
     correctErrorTypes = true
+}
+hilt {
+    enableAggregatingTask = true
 }

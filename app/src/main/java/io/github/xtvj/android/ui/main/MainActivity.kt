@@ -7,15 +7,15 @@ import androidx.paging.PagingData
 import androidx.recyclerview.widget.GridLayoutManager
 import dagger.hilt.android.AndroidEntryPoint
 import io.github.xtvj.android.R
-import io.github.xtvj.android.base.BaseActivity
 import io.github.xtvj.android.databinding.ActivityMainBinding
 import io.github.xtvj.android.ui.animatedVectorDrawable.AnimatedVectorDrawableActivity
 import io.github.xtvj.android.ui.blueTooth.scan.ScanBlueToothActivity
 import io.github.xtvj.android.ui.customview.CustomViewActivity
 import io.github.xtvj.android.ui.navigationView.NavigationViewActivity
 import io.github.xtvj.android.ui.thirdPartDemo.ThirdPartDemoActivity
-import io.github.xtvj.android.utils.GridSpaceItemDecoration
-import io.github.xtvj.android.utils.ScreenUtils.dpToPx
+import io.github.xtvj.common.base.BaseActivity
+import io.github.xtvj.common.utils.GridSpaceItemDecoration
+import io.github.xtvj.common.utils.ScreenUtils.dpToPx
 import kotlinx.coroutines.launch
 
 @AndroidEntryPoint

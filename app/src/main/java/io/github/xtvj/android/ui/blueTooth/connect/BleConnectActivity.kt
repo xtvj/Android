@@ -13,8 +13,8 @@ import dagger.hilt.android.AndroidEntryPoint
 import io.github.xtvj.android.R
 import io.github.xtvj.android.databinding.ActivityBleConnectBinding
 import io.github.xtvj.android.ui.blueTooth.BlePermission
-import io.github.xtvj.android.utils.ContextUtils.toast
-import io.github.xtvj.android.utils.LogUtils.logs
+import io.github.xtvj.common.utils.ContextUtils.toast
+import io.github.xtvj.common.utils.LogUtils.logs
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 

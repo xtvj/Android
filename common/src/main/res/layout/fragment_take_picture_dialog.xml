@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/rounded_top_small"
+        android:paddingStart="@dimen/dimen_48dp"
+        android:paddingTop="@dimen/dimen_16dp"
+        android:paddingEnd="@dimen/dimen_48dp">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/bt_take_picture"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/take_photo"
+            android:textColor="@color/text_color_light"
+            android:textSize="15sp"
+            app:backgroundTint="@color/accent_color"
+            app:cornerRadius="@dimen/dimen_24dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintWidth_percent="0.8" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/bt_sys_album"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/system_album"
+            android:textColor="@color/text_color_light"
+            android:textSize="15sp"
+            app:backgroundTint="@color/accent_color"
+            app:cornerRadius="@dimen/dimen_24dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/bt_take_picture"
+            app:layout_constraintWidth_percent="0.8" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/bt_cancel"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dimen_24dp"
+            android:layout_marginBottom="@dimen/dimen_24dp"
+            android:text="@string/cancel"
+            android:textColor="@color/text_color_light"
+            android:textSize="15sp"
+            app:backgroundTint="@color/accent_color"
+            app:cornerRadius="@dimen/dimen_24dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/bt_sys_album"
+            app:layout_constraintWidth_percent="0.8" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

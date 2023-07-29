@@ -3,8 +3,8 @@ package io.github.xtvj.android.ui.blueTooth.scan
 import android.annotation.SuppressLint
 import android.bluetooth.BluetoothDevice
 import io.github.xtvj.android.R
-import io.github.xtvj.android.base.BindingRecyclerAdapter
 import io.github.xtvj.android.databinding.AdapterBluetoothListBinding
+import io.github.xtvj.common.base.BindingRecyclerAdapter
 
 class ScanAdapter : BindingRecyclerAdapter<AdapterBluetoothListBinding, BluetoothDevice>(R.layout.adapter_bluetooth_list) {
 

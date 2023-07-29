@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <string name="take_photo">take photo</string>
+    <string name="system_album">system album</string>
+    <string name="cancel" tools:ignore="ButtonCase">cancel</string>
+    <string name="loading">loading…</string>
+</resources>

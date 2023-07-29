@@ -7,8 +7,8 @@ import android.graphics.Paint
 import android.util.AttributeSet
 import android.view.View
 import android.view.ViewGroup
-import io.github.xtvj.android.utils.ScreenUtils.dpToPx
-import io.github.xtvj.android.utils.ScreenUtils.spToPx
+import io.github.xtvj.common.utils.ScreenUtils.dpToPx
+import io.github.xtvj.common.utils.ScreenUtils.spToPx
 
 class StatsSliderView : View {
 

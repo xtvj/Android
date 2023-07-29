@@ -2,9 +2,9 @@ package io.github.xtvj.android.ui.main
 
 import androidx.recyclerview.widget.DiffUtil
 import io.github.xtvj.android.R
-import io.github.xtvj.android.base.BindingPagingDataAdapter
 import io.github.xtvj.android.databinding.AdapterMainBinding
-import io.github.xtvj.android.utils.ScreenUtils.dpToPx
+import io.github.xtvj.common.base.BindingPagingDataAdapter
+import io.github.xtvj.common.utils.ScreenUtils.dpToPx
 
 class MainAdapter : BindingPagingDataAdapter<AdapterMainBinding, String>(R.layout.adapter_main, diff) {
 
