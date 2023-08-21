@@ -10,6 +10,7 @@ import io.github.xtvj.android.R
 import io.github.xtvj.android.databinding.ActivityMainBinding
 import io.github.xtvj.android.ui.animatedVectorDrawable.AnimatedVectorDrawableActivity
 import io.github.xtvj.android.ui.blueTooth.scan.ScanBlueToothActivity
+import io.github.xtvj.android.ui.customView2.CustomView2Activity
 import io.github.xtvj.android.ui.customview.CustomViewActivity
 import io.github.xtvj.android.ui.navigationView.NavigationViewActivity
 import io.github.xtvj.android.ui.thirdPartDemo.ThirdPartDemoActivity
@@ -25,7 +26,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
         MainAdapter()
     }
 
-    private val list = listOf("Animated\nDrawable", "自定义\nView", "导航", "蓝牙", "第三方库示例")
+    private val list = listOf("Animated\nDrawable", "自定义\nView", "自定义\nView2", "导航", "蓝牙", "第三方库示例")
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -56,14 +57,18 @@ class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
                 }
 
                 2 -> {
-                    startActivity(Intent(this, NavigationViewActivity::class.java))
+                    startActivity(Intent(this, CustomView2Activity::class.java))
                 }
 
                 3 -> {
-                    startActivity(Intent(this, ScanBlueToothActivity::class.java))
+                    startActivity(Intent(this, NavigationViewActivity::class.java))
                 }
 
                 4 -> {
+                    startActivity(Intent(this, ScanBlueToothActivity::class.java))
+                }
+
+                5 -> {
                     startActivity(Intent(this, ThirdPartDemoActivity::class.java))
                 }
             }
